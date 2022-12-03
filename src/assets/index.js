@@ -1,0 +1,10 @@
+export { default as logoWhite } from './logo-white.svg';
+export { default as iconHome } from './icon-home.svg';
+export { default as iconTeam } from './icon-team.svg';
+export { default as iconNews } from './icon-news.svg';
+export { default as iconOutslanding } from './icon-outslanding.svg';
+export { default as iconCalendar } from './icon-calendar.svg';
+export { default as iconSettings } from './icon-settings.svg';
+export { default as imgUser } from './img-user.svg'
+export { default as iconLogout } from './icon-logout.svg'
+export { default as iconCamara } from './icon-camara.svg'

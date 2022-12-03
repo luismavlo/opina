@@ -1,0 +1,238 @@
+.opinapace {
+  padding: var(--padding-mobile);
+}
+.opina-interview{
+  margin-bottom: 60px;
+}
+.opina-interview__title {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  position: relative;
+  width: max-content;
+  margin-bottom: 35px;
+}
+.opina-interview__title:after {
+  content: '';
+  position: absolute;
+  width: 1.05rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  right: -26px;
+  top: -6px;
+  background-color: var(--color-red-1);
+}
+.opina-interview__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.opina-interview__container__title{
+  position: absolute;
+  background-color: var(--color-red-1);
+  padding: 5px 28px;
+  border-radius: 5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 1rem;
+  top: -18px;
+}
+.news-insights__title {
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  position: relative;
+  margin-bottom: 35px;
+}
+.news-insights__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  justify-items: center;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+.card-news-landing {
+  width: min(100%, 300px);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card-news-landing__body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 18px 25px;
+  background-color: white;
+  height: 250px;
+  color: black;
+}
+
+.card-news-landing__body--overflow{
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-y: auto; /* Add vertical scrollbar */
+  margin-bottom: 10px;
+  height: 250px;
+}
+
+.card-news-landing__title{
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.card-news-landing__text {
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.card-news-landing__btn {
+  display: block;
+  margin: auto;
+  text-transform: uppercase;
+  background-color: var(--color-red-1);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px 5px #0007;
+  transition: box-shadow 100ms ease;
+}
+.card-news-landing__btn:hover {
+  box-shadow: 0 5px 5px #0007;
+  transition: box-shadow 100ms ease;
+}
+.card-news-landing__btn:active {
+  box-shadow: none;
+  transition: box-shadow 100ms ease;
+}
+.webinars-landing {
+  margin-bottom: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.webinars-landing__title{
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  position: relative;
+  margin-bottom: 35px;
+}
+.webinars-landing__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 60px
+}
+.card-web-landing__header {
+  border: 8px solid white;
+  margin-bottom: 25px;
+}
+.card-web-landing__body__title{
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  background-color: var(--color-red-1);
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+}
+.card-web-landing__body__description {
+  line-height: 1.5;
+}
+
+.card-news-landings__img{
+  height: 180px;
+}
+@media screen and (min-width: 720px) {
+  .opinapace {
+    padding: var(--padding-tablet);
+    width: min(1439px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .opina-interview {
+    width: min(100%, 800px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .opina-interview__title,
+  .news-insights__title,
+  .webinars-landing__title {
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+  .opina-interview__container__title {
+    font-size: 1.2rem;
+    left: 50px;
+  }
+  .webinars-landing__container {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-web-landing {
+    display: flex;
+    gap: 5%;
+    width: auto;
+    justify-content: space-between;
+  }
+  .card-web-landing__header {
+    margin-bottom: 0;
+    width: 60%;
+    align-self: flex-start;
+  }
+  .card-web-landing__body {
+    width: 40%;
+  }
+  .card-web-landing__body__title {
+    font-size: 1.4rem;
+  }
+  .card-web-landing__body__description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+  .opina-interview__container::after,
+  .opina-interview__container::before {
+    content: '';
+    position: absolute;
+    background-color: var(--color-red-1);
+    width: 300px;
+    aspect-ratio: 1.6;
+    z-index: -1;
+  }
+  .opina-interview__container::after {
+    top: -8px;
+    right: -8px;
+  }
+  .opina-interview__container::before{
+    bottom: -8px;
+    left: -8px;
+  }
+
+  .card-news-landings__img{
+    height: 200px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .opina-interview__title {
+    left: -60px;
+  }
+  .card-web-landing__header {
+    width: min(510px, 60%);
+    align-self: flex-start;
+  }
+
+  .card-web-landing__body {
+    flex-shrink: 1;
+  }
+  .opina-interview__container::after {
+    top: -15px;
+    right: -15px;
+  }
+  .opina-interview__container::before{
+    bottom: -15px;
+    left: -15px;
+  }
+
+  .card-news-landings__img{
+    height: 200px;
+  }
+}

@@ -1,0 +1,83 @@
+:root {
+  --background-body: #181818;
+  --color-red-1: #EE122C;
+  --padding-mobile: 20px;
+  --padding-tablet: 60px;
+  --padding-laptop: 100px;
+  --width-laptop: min(1300px, 100%);
+  --color-red-2: #720406;
+  --color-red-3: #640202;
+  --font-family: font-family: 'Roboto', sans-serif;
+}
+.display-none{
+  display: none;
+}
+
+/* ----- RESET ----- */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+/* ----- INFO - OPINA ----- */
+.info-opina {
+  padding: 30px var(--padding-mobile);
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-image: url('../../../../assets/about-us/hero-image.png');
+  background-size: cover;
+}
+.info-opina__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+.info-opina__text{
+  line-height: 1.5;
+  text-align: center;
+}
+.info-opina__container2 {
+  display: none;
+}
+@media screen and (min-width: 720px) {
+  .info-opina {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    padding: 80px var(--padding-tablet);
+  }
+  .info-opina__container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .info-opina__logo{
+    width: min(70%, 220px);
+    transform: translateX(30px);
+  }
+}
+@media screen and (min-width: 1000px) {
+  .info-opina {
+    padding: 150px var(--padding-laptop);
+  }
+  .info-opina__container1 {
+    width: min(100%, 500px);
+    margin: 0 auto;
+  }
+  .info-opina__title {
+    font-size: 2.5rem;
+  }
+  .info-opina__text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  .info-opina__logo {
+    width: 300px;
+    transform: translateX(50px);
+  }
+}

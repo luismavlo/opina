@@ -1,0 +1,124 @@
+.mision-vision {
+  margin-top: 40px;
+}
+.mision-vision-container {
+  margin-bottom: 40px;
+  padding: 20px var(--padding-mobile);
+}
+.mision-vision__title{
+  text-transform: uppercase;
+  color: var(--color-red-1);
+  text-align: center;
+  margin-bottom: 15px;
+}
+.mision-vision__text {
+  line-height: 1.5;
+  width: min(400px, 100%);
+  margin: 0 auto;
+}
+.mision-vision-container--vision {
+  background-color: var(--color-red-1);
+  padding-top: 60px;
+  padding-bottom: 60px;
+  clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+}
+.mision-vision-container--vision .mision-vision__title {
+  color: white;
+}
+.mision-img, .vision-img, .mision-vision__img, .objetivo-img{
+  display: none;
+}
+@media screen and (min-width: 720px) {
+  .mision-vision {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 60px var(--padding-tablet);
+    position: relative;
+  }
+  .mision-vision-container {
+    width: auto;
+    width: min(350px, 100%);
+  }
+  .mision-vision-container:nth-child(2) {
+    clip-path: none;
+    background-color: initial;
+    align-self: flex-start;
+  }
+  .mision-vision-container:nth-child(2) .mision-vision__title {
+    color: var(--color-red-1);
+  }
+  .mision-vision__title{
+    color: var(--color-red-1);
+    width: min(400px, 100%);
+    text-align: left;
+    font-size: 2.2rem;
+  }
+  .mision-vision__text{
+    margin: 0;
+  }
+  .mision-img{
+    display: initial;
+    position: absolute;
+    width: 200px;
+    top: 0;
+    left: max(15%, 100px);
+  }
+  .vision-img{
+    display: initial;
+    position: absolute;
+    width: min(30%, 300px);
+    top: 37%;
+    right: 12%;
+  }
+  .objetivo-img{
+    display: initial;
+    position: absolute;
+    width: min(30%, 240px);
+    bottom: 0;
+    left: max(15%, 100px);;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .mision-vision {
+    padding: 100px var(--padding-laptop);
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .mision-vision-container,
+  .mision-vision-container:nth-child(2){
+    clip-path: polygon(7% 0, 100% 0%, 93% 100%, 0% 100%);
+    background-color: var(--color-red-1);
+    margin-bottom: 100px;
+    padding: 30px 80px;
+    width: 500px;
+  }
+  .mision-vision-container:nth-child(2) {
+    clip-path: polygon(0 0, 93% 0, 100% 100%, 7% 100%)
+  }
+  .mision-vision__title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .mision-vision-container .mision-vision__title,
+  .mision-vision-container:nth-child(2) .mision-vision__title {
+    color: white;
+  }
+  .mision-vision__text {
+    font-size: 1.1rem;
+    opacity: 0.8;
+  }
+  .mision-img {
+    z-index: -2;
+    top: 30px;
+    width: min(240px, 50%);
+  }
+  .objetivo-img {
+    display: initial;
+    position: absolute;
+    z-index: -1;
+    width: min(30%, 320px);
+  }
+}
