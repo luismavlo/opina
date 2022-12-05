@@ -1,5 +1,6 @@
 import axios from "axios";
 import getConfig from "../../helpers/getconfig";
+import useNotification from "../../hooks/useNotification";
 import { types } from "../types/types";
 import { setIsLoading } from "./ui";
 
@@ -11,6 +12,7 @@ export const startCreateWebinar = (
   featured
 ) => {
   return (dispatch) => {
+    const notificationActive = useNotification()
     const formData = new FormData();
     formData.append("web_tittle", title);
     formData.append("web_description", description);
@@ -24,9 +26,13 @@ export const startCreateWebinar = (
         formData,
         getConfig()
       )
-      .then((res) => {
-        console.log(res.data);
+      .then(({data}) => {
         dispatch(startGetWebinar());
+        if(data.ok){
+          notificationActive(data.message, data.ok, dispatch)
+        } else {
+          notificationActive(data, data.ok, dispatch)
+        }
       })
       .catch((error) => console.log(error))
       .finally(() => dispatch(setIsLoading(false)));
@@ -41,6 +47,7 @@ export const startUpdateWebinar = (
   web_featured
 ) => {
   return (dispatch) => {
+    const notificationActive = useNotification()
     const formData = new FormData();
     formData.append("web_tittle", web_tittle);
     formData.append("web_description", web_description);
@@ -53,9 +60,14 @@ export const startUpdateWebinar = (
         formData,
         getConfig()
       )
-      .then((res) => {
-        console.log(res.data);
+      .then(({data}) => {
+        console.log(data);
         dispatch(startGetWebinar());
+        if(data.ok){
+          notificationActive(data.message, data.ok, dispatch)
+        } else {
+          notificationActive(data, data.ok, dispatch)
+        }
       })
       .catch((error) => console.log(error))
       .finally(() => dispatch(setIsLoading(false)));
@@ -64,15 +76,16 @@ export const startUpdateWebinar = (
 
 export const startDeleteWebinar = (id) => {
   return (dispatch) => {
+    const notificationActive = useNotification()
     dispatch(setIsLoading(true));
     axios
       .delete(
         `https://backend.opina-peru.com/WebinarsController/delete_webinars/${id}`,
         getConfig()
       )
-      .then((res) => {
-        console.log(res.data);
+      .then(({data}) => {
         dispatch(startGetWebinar());
+        notificationActive("Webinar eliminado exitosamente.", true, dispatch)
       })
       .catch((error) => console.log(error))
       .finally(() => dispatch(setIsLoading(false)));

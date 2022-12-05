@@ -38,7 +38,6 @@ const AppRouter = () => {
             </PublicRoute>
           }
         />
-
         <Route
           path="/opina/*"
           element={
@@ -47,7 +46,6 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
-
         <Route path="*" element={<LandingScreen />} />
       </Routes>
     </HashRouter>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import getConfig from "../../helpers/getconfig";
+import useNotification from "../../hooks/useNotification";
 import { types } from "../types/types";
 import { setIsLoading } from "./ui";
 
@@ -17,6 +18,7 @@ export const startCreateEmployees = (
   formData.append("team_cargo", position);
   formData.append("team_avatar", avatar);
   return (dispatch) => {
+    const notificationActive = useNotification()
     dispatch(setIsLoading(true));
     axios
       .post(
@@ -24,7 +26,10 @@ export const startCreateEmployees = (
         formData,
         getConfig()
       )
-      .then((res) => dispatch(startGetEmployees()))
+      .then(({data}) => {
+        dispatch(startGetEmployees())
+        notificationActive(data.message, data.ok, dispatch)
+      })
       .catch((error) => console.log(error))
       .finally(() => dispatch(setIsLoading(false)));
   };
@@ -38,6 +43,7 @@ export const startUpdateEmployees = (
   team_description
 ) => {
   return (dispatch) => {
+    const notificationActive = useNotification()
     const formData = new FormData();
     formData.append("team_name", team_name);
     formData.append("team_email", team_email);
@@ -50,8 +56,9 @@ export const startUpdateEmployees = (
         formData,
         getConfig()
       )
-      .then((res) => {
+      .then(({data}) => {
         dispatch(startGetEmployees());
+        notificationActive(data.message, data.ok, dispatch)
       })
       .catch((error) => console.log(error))
       .finally(() => dispatch(setIsLoading(false)));
@@ -59,6 +66,7 @@ export const startUpdateEmployees = (
 };
 
 export const startDeleteEmployees = (id) => {
+  const notificationActive = useNotification()
   return (dispatch) => {
     dispatch(setIsLoading(true));
     axios
@@ -68,6 +76,7 @@ export const startDeleteEmployees = (id) => {
       )
       .then((res) => {
         dispatch(startGetEmployees());
+        notificationActive("Integrante eliminado correctamente.", true, dispatch)
       })
       .finally(() => dispatch(setIsLoading(false)));
   };

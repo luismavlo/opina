@@ -1,5 +1,6 @@
 import axios from "axios";
 import getConfig from "../../helpers/getconfig";
+import useNotification from "../../hooks/useNotification";
 import { types } from "../types/types";
 import { setIsLoading } from "./ui";
 
@@ -11,6 +12,7 @@ export const startCreateNews = (title, description, image, pdf, featured) => {
   formData.append("new_image", image);
   formData.append("new_featured", featured ? 1 : 0);
   return (dispatch) => {
+    const notificationActive = useNotification()
     dispatch(setIsLoading(true));
     axios
       .post(
@@ -18,8 +20,13 @@ export const startCreateNews = (title, description, image, pdf, featured) => {
         formData,
         getConfig()
       )
-      .then((res) => {
+      .then(({data}) => {
         dispatch(startGetNews());
+        if(data.ok){
+          notificationActive(data.message, data.ok, dispatch)
+        } else {
+          notificationActive(data, data.ok, dispatch)
+        }
       })
       .catch((error) => console.log(error))
       .finally(() => dispatch(setIsLoading(false)));
@@ -33,6 +40,7 @@ export const startUpdateNews = (
   new_featured
 ) => {
   return (dispatch) => {
+    const notificationActive = useNotification()
     const formData = new FormData();
     formData.append("new_tittle", new_tittle);
     formData.append("new_description", new_description);
@@ -44,13 +52,22 @@ export const startUpdateNews = (
         formData,
         getConfig()
       )
-      .then((res) => dispatch(startGetNews()))
+      .then(({data}) => {
+        dispatch(startGetNews())
+        console.log(data)
+        if(data.ok){
+          notificationActive(data.message, data.ok, dispatch)
+        } else {
+          notificationActive(data, data.ok, dispatch)
+        }
+      })
       .catch((error) => console.log(error))
       .finally(() => dispatch(setIsLoading(false)));
   };
 };
 
 export const startDeleteNews = (id) => {
+  const notificationActive = useNotification()
   return (dispatch) => {
     dispatch(setIsLoading(true));
     axios
@@ -58,7 +75,10 @@ export const startDeleteNews = (id) => {
         `https://backend.opina-peru.com/NewController/delete_new/${id}`,
         getConfig()
       )
-      .then((res) => dispatch(startGetNews()))
+      .then(() => {
+        dispatch(startGetNews())
+        notificationActive("Noticia eliminada exitosamente", true, dispatch)
+      })
       .catch((error) => console.log(error))
       .finally(() => dispatch(setIsLoading(false)));
   };

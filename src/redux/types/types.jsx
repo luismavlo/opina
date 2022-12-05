@@ -17,4 +17,6 @@ export const types = {
   clippingGet: "[clipping] Get Clipping",
 
   uiSetIsLoadding: "[ui] Is Loading",
+
+  uiNotifications: "[ui] Notifications"
 };

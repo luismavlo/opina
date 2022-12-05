@@ -1,5 +1,6 @@
 import axios from "axios";
 import getConfig from "../../helpers/getconfig";
+import useNotification from "../../hooks/useNotification";
 import { types } from "../types/types";
 import { setIsLoading } from "./ui";
 
@@ -19,6 +20,7 @@ export const startGetClipping = () => {
 };
 
 export const startCreateClipping = (name, link) => {
+  const notificationActive = useNotification()
   const formData = new FormData();
   formData.append("clipping_name", name);
   formData.append("clipping_link", link);
@@ -30,9 +32,15 @@ export const startCreateClipping = (name, link) => {
         formData,
         getConfig()
       )
-      .then((res) => {
+      .then(({data}) => {
         dispatch(startGetClipping());
-        console.log(res);
+        if(data.ok) {
+          notificationActive(data.message, data.ok, dispatch)
+        } else {
+          if(!data.message) {
+            notificationActive(data, false, dispatch)
+          }
+        }
       })
       .catch((error) => console.log(error))
       .finally(() => dispatch(setIsLoading(false)));
@@ -40,6 +48,7 @@ export const startCreateClipping = (name, link) => {
 };
 
 export const startUpdateClipping = (id, name, link) => {
+  const notificationActive = useNotification()
   const formData = new FormData();
   formData.append("clipping_name", name);
   formData.append("clipping_link", link);
@@ -51,9 +60,15 @@ export const startUpdateClipping = (id, name, link) => {
         formData,
         getConfig()
       )
-      .then((res) => {
-        console.log(res.data);
+      .then(({data}) => {
         dispatch(startGetClipping());
+        if(data.ok) {
+          notificationActive(data.message, data.ok, dispatch)
+        } else {
+          if(!data.message) {
+            notificationActive(data, false, dispatch)
+          }
+        }
       })
       .catch((error) => console.log(error))
       .finally(() => dispatch(setIsLoading(false)));
@@ -61,6 +76,9 @@ export const startUpdateClipping = (id, name, link) => {
 };
 
 export const startDeleteClipping = (id) => {
+
+  const notificationActive = useNotification()
+
   return (dispatch) => {
     dispatch(setIsLoading(true));
     axios
@@ -68,7 +86,10 @@ export const startDeleteClipping = (id) => {
         `https://backend.opina-peru.com/ClippingController/delete_clipping/${id}`,
         getConfig()
       )
-      .then(() => dispatch(startGetClipping()))
+      .then(({data}) => {
+        dispatch(startGetClipping())
+        notificationActive(data.message, !data.ok, dispatch)
+      })
       .catch((error) => console.log(error))
       .finally(() => dispatch(setIsLoading(false)));
   };
