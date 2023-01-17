@@ -36,7 +36,7 @@ const NewsScreen = () => {
       </section>
 
       <div className="webinar-list-section">
-        <a href="#" className="btn btn--white" onClick={handleFilter}>
+        <a className="btn btn--white" onClick={handleFilter}>
           Fitrar Noticias
         </a>
       </div>

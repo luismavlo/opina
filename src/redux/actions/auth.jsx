@@ -1,10 +1,12 @@
 import axios from "axios";
 import getConfig from "../../helpers/getconfig";
+import useNotification from "../../hooks/useNotification";
 import { types } from "../types/types";
 import { setIsLoading } from "./ui";
 import { startGetUsers } from "./users";
 
 export const startLogin = (user_email, user_password) => {
+  const notificationActive = useNotification()
   return (dispatch) => {
     dispatch(setIsLoading(true));
     axios
@@ -15,16 +17,16 @@ export const startLogin = (user_email, user_password) => {
           user_password,
         }
       )
-      .then((res) => {
-        console.log(res)
-        localStorage.setItem("token", res.data.token);
+      .then(({ data }) => {
+        localStorage.setItem("token", data.token);
         localStorage.setItem("token-init-date", new Date().getTime());
+        notificationActive(data.message, data.ok, dispatch)
         dispatch(
           login({
-            uid: res.data.user_id,
-            name: res.data.user_name,
-            role: res.data.user_role,
-            avatar: res.data.user_avatar,
+            uid: data.user_id,
+            name: data.user_name,
+            role: data.user_role,
+            avatar: data.user_avatar,
           })
         );
       })
@@ -66,6 +68,7 @@ export const startChecking = () => {
 };
 
 export const startRegister = (name, email, password, description, avatar) => {
+  const notificationActive = useNotification()
   const formData = new FormData();
   formData.append("user_name", name);
   formData.append("user_email", email);
@@ -80,8 +83,8 @@ export const startRegister = (name, email, password, description, avatar) => {
         formData,
         getConfig()
       )
-      .then((res) => {
-        console.log(res.data);
+      .then(({ data }) => {
+        notificationActive(data.message, data.ok, dispatch)
         dispatch(startGetUsers());
       })
       .catch((error) => console.log(error))

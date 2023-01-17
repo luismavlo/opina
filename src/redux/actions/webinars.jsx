@@ -46,13 +46,14 @@ export const startUpdateWebinar = (
   web_link,
   web_featured
 ) => {
+  console.log(web_featured)
   return (dispatch) => {
     const notificationActive = useNotification()
     const formData = new FormData();
     formData.append("web_tittle", web_tittle);
     formData.append("web_description", web_description);
     formData.append("web_link", web_link);
-    formData.append("web_featured", web_featured ? 1 : 0);
+    formData.append("web_featured", web_featured);
     dispatch(setIsLoading(true));
     axios
       .post(
