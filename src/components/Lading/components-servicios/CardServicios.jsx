@@ -11,7 +11,7 @@ const CardServicios = ({card}) => {
       <p className='card-servicios__description'>
         {card.description}
       </p>
-      <button className='card-servicios__btn'>Saber más</button>
+      <a target='_blank' href={card.link} className='card-servicios__btn'>Saber más</a>
     </article>
   )
 }

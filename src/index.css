@@ -490,6 +490,7 @@ input, textarea {
   color: white;
   cursor: pointer;
   transition: transform 100ms ease, filter 100ms ease;
+  width: max-content;
 }
 .card-servicios__btn:hover {
   transform: scale(1.05);
@@ -614,7 +615,7 @@ input, textarea {
   .section-clipping-home {
     padding: 0 var(--padding-laptop);
     width: var(--width-laptop);
-    margin: 0 auto 360px;
+    margin: 0 auto 400px;
   }
   .home-subtitles-clipping{
     font-size: 20px;

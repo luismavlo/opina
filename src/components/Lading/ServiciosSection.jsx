@@ -7,17 +7,20 @@ const ServiciosSection = () => {
     {
       title: 'Servicios de',
       span: 'Investigación',
-      description: 'Se identifica y analiza a la competencia, así como al buyer persona logrando detectar los Insights a través de diversas herramientas.'
+      description: 'Se identifica y analiza a la competencia, así como al buyer persona logrando detectar los Insights a través de diversas herramientas.',
+      link: '/services/Investigacion de mercados.pdf'
     },
     {
       title: 'Analítica y',
       span: 'Medición',
-      description: 'Se aplica múltiples métodos para extraer la información, así como diversas tecnologías y procesos para combinar y analizar la data.'
+      description: 'Se aplica múltiples métodos para extraer la información, así como diversas tecnologías y procesos para combinar y analizar la data.',
+      link: '/services/Analitica y medicion.pdf'
     },
     {
       title: 'Publicidad, medios y',
       span: 'relaciones públicas',
-      description: 'Brindar opciones de medios inteligentes que posicionan la marca y efectivizan el contenido.'
+      description: 'Brindar opciones de medios inteligentes que posicionan la marca y efectivizan el contenido.',
+      link: '/services/PLANI ESTRATEGICA.pdf'
     },
   ]
 
