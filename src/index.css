@@ -199,6 +199,7 @@ input, textarea {
   cursor: pointer;
   margin: 0 auto;
   transition: transform 150ms ease, filter 150ms ease;
+  width: max-content;
 }
 .btn-principal-section:hover {
   transform: scale(1.05);
@@ -1967,4 +1968,8 @@ input, textarea {
   .card-clipping > form{
     flex-direction: row;
   }
+}
+
+.w100{
+  width: 100%;
 }
