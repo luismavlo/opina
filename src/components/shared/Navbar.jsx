@@ -66,13 +66,13 @@ const Navbar = () => {
           <ul>
             <li>
               <NavLink
-                to="/opina/home"
+                to="/opina/clipping"
                 className={({ isActive }) =>
                   isActive ? "nav-active navlink" : "navlink"
                 }
               >
                 <img src={iconHome} alt="" />
-                Home
+                Clipping
               </NavLink>
             </li>
             <li>

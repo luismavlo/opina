@@ -15,7 +15,7 @@ const DashboardRouter = () => {
     <Routes>
       <Route element={<NotificactionRoute />}>
         <Route path="auth/register" element={<RegisterScreen />} />
-        <Route path="home" element={<HomeScreen />} />
+        <Route path="clipping" element={<HomeScreen />} />
         <Route path="team" element={<TeamScreen />} />
         <Route path="outslanding" element={<OutslandingScreen />} />
         <Route path="news" element={<NewsScreen />} />
