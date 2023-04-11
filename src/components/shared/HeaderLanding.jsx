@@ -18,6 +18,10 @@ const HeaderLanding = () => {
     }
   };
 
+  const redirectTo = () => {
+    window.location.href = "https://opina-peru.com/comunidad/";
+  };
+
   const navLinkFunction = ({ isActive }) =>
     isActive ? `nav-link nav-link__active` : "nav-link";
 
@@ -45,9 +49,14 @@ const HeaderLanding = () => {
               Opinapace
             </NavLink>
           </li>
+          <li>
+            <button className="header__btn-login" onClick={redirectTo}>
+              Iniciar Sesión
+            </button>
+          </li>
         </ul>
       </nav>
-      <NavLink to='/' className="container-logo-header">
+      <NavLink to="/" className="container-logo-header">
         <img src={logoRed} alt="logo-header" />
       </NavLink>
     </header>

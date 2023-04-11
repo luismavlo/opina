@@ -8,7 +8,7 @@ const OpinaInterview = () => {
       <article className="opina-interview__container">
         <h3 className="opina-interview__container__title">Canal 7 trujillo</h3>
         <a
-          href="https://www.facebook.com/watch/live/?ref=watch_permalink&v=6031736276842478"
+          href="https://www.youtube.com/watch?v=zAwCOFWxIHc"
           target="_blank"
         >
           <img className="opina-interview__video" src={video} alt="" />

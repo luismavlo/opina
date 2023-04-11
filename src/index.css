@@ -547,6 +547,7 @@ input, textarea {
 
 /* ---------------------- SECTION ClIPLING ---------------------- */
 .section-clipping-home{
+
   padding: 0 var(--padding-mobile);
 }
 .home-subtitles-clipping {
@@ -608,7 +609,7 @@ input, textarea {
   }
   .img-newspaper {
     position: absolute;
-    width: min(60%, 600px);
+    width: min(50%, 500px);
     top: 20px;
   }
 }
@@ -617,6 +618,7 @@ input, textarea {
     padding: 0 var(--padding-laptop);
     width: var(--width-laptop);
     margin: 0 auto 400px;
+    min-height: 144px;
   }
   .home-subtitles-clipping{
     font-size: 20px;
@@ -697,12 +699,157 @@ input, textarea {
   text-transform: uppercase;
   transition: transform 200ms ease, filter 200ms ease;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 .btn-form-contact:hover {
   transform: scaleY(1.07);
   filter: brightness(1.05);
   transition: transform 200ms ease, filter 200ms ease;
 }
+
+
+.btn-form-contact:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.icon-message {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.send-icon {
+  margin-left: 10px;
+}
+
+.send-text {
+  transition: transform 0.3s ease;
+}
+
+.sending-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: #fff;
+  animation: spin 1s linear infinite;
+  opacity: 0.8;
+  transform: scale(0);
+}
+
+
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-form-contact:hover .send-text {
+  transform: translateX(5px);
+}
+
+.confirmation-animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.confirmation-overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+.confirmation-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.confirmation-icon {
+  font-size: 3rem;
+  color: #4caf50;
+  margin-bottom: 1rem;
+}
+
+.confirmation-text {
+  font-size: 1.2rem;
+  color: #000;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.confirmation-btn {
+  background-color: #000;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirmation-btn:hover {
+  background-color: #4caf50;
+  transition: background-color 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .confirmation-box {
+    height: 150px;
+    width: 250px;
+  }
+
+  .confirmation-text {
+    font-size: 1rem;
+  }
+
+  .confirmation-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+
+
 @media screen and (min-width: 720px) {
   .section-contact {
     display: flex;
@@ -1972,4 +2119,57 @@ input, textarea {
 
 .w100{
   width: 100%;
+}
+
+.header__btn-login {
+  margin-top: 5px;
+  padding: 7px;
+  width: 8rem;
+  background-color: #EE122C;
+  border: none;
+  color: white;
+  transition: all 400ms;
+  font-size: 1rem;
+}
+
+.header__btn-login:hover {
+  
+  margin-top: 5px;
+  padding: 7px;
+  width: 8rem;
+  background-color: #720406;
+  border: none;
+  color: white;
+}
+
+.header__btn-login:active {
+  animation-name: pulsar-boton;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+}
+
+@keyframes pulsar-boton {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.link-register{
+  position: relative;
+  z-index: 100;
+  color: white; 
+  text-decoration: underline;
+  transition: color 0.2s ease; 
+  cursor: pointer;
+}
+
+.link-register:hover {
+  color: #640202; /* color del texto al pasar el cursor por encima */
+  cursor: pointer; /* cursor de puntero al pasar el cursor por encima */
 }
