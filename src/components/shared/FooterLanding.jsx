@@ -27,7 +27,7 @@ const FooterLanding = () => {
           </li>
           <li className="list-item-footer-2">
             <p className="footer-inscribirse">
-              Incríbete
+              Inscríbete
               <a
                 href="https://opina-peru.com/comunidad/register/"
                 className="link-register"

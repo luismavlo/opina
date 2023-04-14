@@ -14,6 +14,8 @@ import {
 } from "../../assets";
 import { startLogout } from "../../redux/actions/auth";
 import "./shared.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
   const hamMenu = useRef();
@@ -22,20 +24,22 @@ const Navbar = () => {
 
   const { role } = useSelector((state) => state.auth);
 
+  
   const hamMenuClick = () => {
     hamMenu.current.classList.toggle("close-menu");
     navBar.current.classList.toggle("navbar__close");
   };
-
+  
   const navListClick = (e) => {
     if (e.target.classList.contains("nav-link")) {
       hamMenu.current.classList.toggle("close-menu");
       navBar.current.classList.toggle("navbar__close");
     }
   };
-
+  
   const { avatar, name } = useSelector((state) => state.auth);
-
+  
+  console.log(avatar)
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -130,9 +134,15 @@ const Navbar = () => {
           </ul>
         </section>
         <section className="navbar__footer">
-          <div className="navbar__content-user-img">
-            <img className="navbar__img-user" src={avatar} alt="" />
-          </div>
+          {
+            avatar.slice(-2) === '/0'
+              ? <i class="fa-solid fa-circle-user navbar__footer__icon"></i>
+              : (
+                <div className="navbar__content-user-img">
+                  <img className="navbar__img-user" src={avatar} alt="" />
+                </div>
+              )
+          }
           <div className="navbar__info-user">
             <span>{name.toUpperCase()}</span>
             <small>Gerente General</small>

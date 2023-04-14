@@ -5,7 +5,7 @@ const CardWebinarLanding = ({ webinar }) => {
   return (
     <article className="card-web-landing">
       <header className="card-web-landing__header">
-        <a href={webinar.web_link} target="_blank">
+        <a className="card-web-landing__link" href={webinar.web_link} target="_blank">
           <img
             className="card-web-landing__img"
             src={webinar.web_image}
